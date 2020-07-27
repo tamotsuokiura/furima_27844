@@ -16,6 +16,7 @@
 
 ### Association
 - has_many :items
+- has_many :user
 
 
 
@@ -29,6 +30,9 @@
 |category|integer|null: false|
 |condition|integer|null: false|
 |carriage|integer|null: false|
+|area|integer|null: false|
+|duration|integer|null: false|
+|price|integer|null: false|
 |user|references|foreign_key: true|
 
 
@@ -42,13 +46,28 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer|null: false|
-|prefecture|integer|null: false|
-|city|string|null: false|
-|house_number|string|null: false|
-|building_name|string|
+|user|references|foreign_key: true|
 |item|references|foreign_key: true|
 
 
 ### Association
 - belongs_to :item
+- belongs_to :user
+- has_one :address
+
+
+
+## addressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|null: false|
+|prefecture|integer|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
+|building_name|string|
+|order|references|foreign_key: true|
+
+
+### Association
+- belongs_to :order
