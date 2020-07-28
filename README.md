@@ -66,7 +66,7 @@
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string|
-|tel|integer|null: false|
+|tel|string|null: false|
 |item|references|foreign_key: true|
 
 
