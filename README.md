@@ -16,7 +16,7 @@
 
 ### Association
 - has_many :items
-- has_many :user
+- has_many :orders
 
 
 
