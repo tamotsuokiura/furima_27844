@@ -11,6 +11,25 @@ describe "User" do
         expect(user.errors[:nickname]).to include("can't be blank")
       end
 
+      it "email空NG" do
+        user = build(:user,email:"" )
+        user.valid?
+        expect(user.errors[:email]).to include("can't be blank")
+      end
+
+      it "email@なしNG" do
+        user = build(:user,email:"dnasjfnasnfnfnsdonfoi" )
+        user.valid?
+        expect(user.errors[:email]).to include("is invalid")
+      end
+
+      it "email重複NG" do
+        user1 = create(:user)
+        user = build(:user, email: user1.email )
+        user.valid?
+        expect(user.errors[:email]).to include("has already been taken")
+      end
+
       it "password空NG" do
         PASS = ""
         user = build(:user,password: PASS, password_confirmation: PASS )
@@ -40,6 +59,12 @@ describe "User" do
         user = build(:user,password: "1234a")
         user.valid?
         expect(user.errors[:password]).to include("is invalid")
+      end
+
+      it "password1回入力のみNG" do
+        user = build(:user, password_confirmation: "" )
+        user.valid?
+        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
       end
 
       it "name_kanzi_first空NG" do
@@ -118,7 +143,7 @@ describe "User" do
         user.valid?
         expect(user).to be_valid
       end
-      
+
     end
   end
 end

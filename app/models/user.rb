@@ -29,4 +29,6 @@ class User < ApplicationRecord
     validates :birth
   end
 
+  validates :nickname, uniqueness: { case_sensitive: true }
+
 end
