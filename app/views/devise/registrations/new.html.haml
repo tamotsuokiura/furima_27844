@@ -49,16 +49,6 @@
         %label.form-text 生年月日
         %span.indispensable 必須
       .input-birth-wrap
-        -# != sprintf(                               |
-        -#   f.date_select(                             |
-        -#     :birth,                                   |
-        -#     class:'select-birth',                    |
-        -#     use_month_numbers: true,                 |
-        -#     prompt:'--',                             |
-        -#     start_year: 1930,                        |
-        -#     end_year: (Time.now.year - 5),           |
-        -#     date_separator: '%s'),                   |
-        -#   "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" |
         != sprintf(f.date_select(:birth, class:'select-birth', use_month_numbers: true, prompt:'--', start_year: 1930, end_year: (Time.now.year - 5), date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>"
       %p.info-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
     .form-group

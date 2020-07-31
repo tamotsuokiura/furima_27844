@@ -9,17 +9,24 @@ class User < ApplicationRecord
   ZENKAKU_KANA_REGEX = /\A[ァ-ヶー－]+\z/
 
   validates :password, format: { with: PASSWORD_REGEX } #英数字をそれぞれ一文字以上持つかつ6文字以上
-  validates :nickname, presence: true
-  validates :name_kanzi_first, presence: true, format: { with: ZENKAKU_REGEX } #全角漢字ひらがなカナのみ
-  validates :name_kanzi_last, presence: true, format: { with: ZENKAKU_REGEX } #全角漢字ひらがなカナのみ
-  validates :name_kana_first, presence: true, format: { with: ZENKAKU_KANA_REGEX } #全角カナのみ
-  validates :name_kana_last, presence: true, format: { with: ZENKAKU_KANA_REGEX } #全角カナのみ
-  validates :birth, presence: true
 
-  # validates :nickname, presence: true
-  # validates :name_kanzi_first, presence: true
-  # validates :name_kanzi_last, presence: true
-  # validates :name_kana_first, presence: true
-  # validates :name_kana_last, presence: true
-  # validates :birth, presence: true
+  with_options format: { with: ZENKAKU_REGEX } do #全角漢字ひらがなカナのみ 
+    validates :name_kanzi_first
+    validates :name_kanzi_last
+  end
+
+  with_options format: { with: ZENKAKU_KANA_REGEX } do #全角カナのみ
+    validates :name_kana_first
+    validates :name_kana_last
+  end
+
+  with_options presence: true do 
+    validates :nickname, presence: true
+    validates :name_kanzi_first
+    validates :name_kanzi_last
+    validates :name_kana_first
+    validates :name_kana_last
+    validates :birth
+  end
+
 end
