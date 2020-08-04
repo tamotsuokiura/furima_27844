@@ -3,7 +3,7 @@ describe "User" do
 
   describe "#create" do
 
-    context "NG" do
+    context "登録ができないとき" do
 
       before do 
         @user = build(:user)
@@ -119,7 +119,7 @@ describe "User" do
       end
     end
 
-    context "OK" do
+    context "登録が成功したとき" do
 
       before do 
         @user = build(:user)
