@@ -8,5 +8,6 @@ FactoryBot.define do
     area_id              {2}
     duration_id          {2}
     price             {1000}
+    association :user_id, factory: :user
   end
 end
