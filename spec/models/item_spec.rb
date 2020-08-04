@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   describe "#create" do
 
-    context "NG" do
+    context "商品の投稿ができないとき" do
       before do
         @item = build(:item)
         @item.image = fixture_file_upload('public/images/test_image.png')
@@ -89,7 +89,7 @@ RSpec.describe Item, type: :model do
     end
 
 
-    context "OK" do
+    context "商品の投稿が成功したとき" do
 
       before do
         @item = build(:item)
