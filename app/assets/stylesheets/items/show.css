@@ -33,6 +33,10 @@
   object-fit: contain;
 }
 
+#adden:before{
+  content:"¥"
+}
+
 .item-price-box {
   margin: 25px 0px;
   display: flex;
