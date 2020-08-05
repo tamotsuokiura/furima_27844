@@ -2,42 +2,46 @@
 .item-show
   .item-box
     %h2.name
-      = "商品名"
+      = @item.name
     .item-img-content
-      = image_tag "item-sample.png" ,class:"item-box-img"
-      .sold-out
-        %span Sold Out!!
+      = image_tag @item.image ,class:"item-box-img"
+      -# - if item.order.id.present?
+        -# .sold-out
+        -#   %span Sold Out!!
     .item-price-box
-      %span.item-price
-        ¥ 999,999,999
+      %span.item-price#adden
+        = @item.price
       %span.item-postage
         (税込) 送料込み
-    = link_to '商品の編集', "#", method: :get, class: "item-red-btn"
-    %p.or-text or
-    = link_to '削除', "#", method: :delete, class:'item-destroy'
-    = link_to '購入画面に進む', "#" ,class:"item-red-btn"
+    - if user_signed_in?
+      - if current_user.id == @item.user.id
+        = link_to '商品の編集', "#", method: :get, class: "item-red-btn"
+        %p.or-text or
+        = link_to '削除', "#", method: :delete, class:'item-destroy'
+      - else
+        = link_to '購入画面に進む', "#" ,class:"item-red-btn"
     .item-explain-box
       %span= "商品説明"
     %table.detail-table
       %tbody
         %tr
           %th.detail-item 出品者
-          %td.detail-value= "出品者名"
+          %td.detail-value= @item.user.nickname
         %tr
           %th.detail-item カテゴリー
-          %td.detail-value= "カテゴリー名"
+          %td.detail-value= @item.category.name
         %tr
           %th.detail-item 商品の状態
-          %td.detail-value= "商品の状態"
+          %td.detail-value= @item.condition.name
         %tr
           %th.detail-item 配送料の負担
-          %td.detail-value= "発送料の負担"
+          %td.detail-value= @item.carriage.name
         %tr
           %th.detail-item 発送元の地域
-          %td.detail-value= "発送元の地域"
+          %td.detail-value= @item.area.name
         %tr
           %th.detail-item 発送日の目安
-          %td.detail-value= "発送日の目安"
+          %td.detail-value= @item.duration.name
     .option
       .favorite-btn
         = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
