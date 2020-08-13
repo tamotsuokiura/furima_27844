@@ -3,11 +3,11 @@ describe "OrderInfo" do
 
   describe "#create" do
 
-    context "登録ができないとき" do
+    before do 
+      @order_info = build(:order_info)
+    end
 
-      before do 
-        @order_info = build(:order_info)
-      end
+    context "登録ができないとき" do
 
       it "postal_code空NG" do
         @order_info.postal_code = "" 
@@ -63,13 +63,21 @@ describe "OrderInfo" do
         expect(@order_info.errors[:tel]).to include("is too long (maximum is 11 characters)")
       end
 
+      it "user_id空NG" do
+        @order_info.user_id = nil 
+        @order_info.valid?
+        expect(@order_info.errors[:user_id]).to include("can't be blank")
+      end
+
+      it "item_id空NG" do
+        @order_info.item_id = nil 
+        @order_info.valid?
+        expect(@order_info.errors[:item_id]).to include("can't be blank")
+      end
+
     end
 
     context "登録が成功したとき" do
-
-      before do 
-        @order_info = build(:order_info)
-      end
 
       it "OK" do
         @order_info.valid?
