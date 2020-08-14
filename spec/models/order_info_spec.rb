@@ -4,7 +4,13 @@ describe "OrderInfo" do
   describe "#create" do
 
     before do 
-      @order_info = build(:order_info)
+      @seller = create(:user)
+      @buyer = create(:user)
+      @item = build(:item, user: @seller)
+      @item.image = fixture_file_upload('public/images/test_image.png')
+      @item.save
+      @order_info = build(:order_info, user_id: @buyer.id, item_id: @item.id)
+      sleep(1)
     end
 
     context "登録ができないとき" do
