@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item
-  before_action :authenticate_member!
+  before_action :authenticate_user!
 
   def index
     if @item.user.id == current_user.id
