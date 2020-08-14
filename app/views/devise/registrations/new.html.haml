@@ -4,6 +4,7 @@
     .form-header
       %h1.form-header-text
         会員情報入力
+    = render "shared/error_message", instance:@user
     .form-group
       .form-text-wrap
         %label.form-text ニックネーム

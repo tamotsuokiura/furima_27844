@@ -5,6 +5,7 @@
     .items-sell-main
       %h2.items-sell-title 商品の情報を入力
       = form_with model: @item, local: true, class: "craete_item" do |f|
+        = render "shared/error_message", instance: @item
         .img-upload
           .weight-bold-text
             出品画像
