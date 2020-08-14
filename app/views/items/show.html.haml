@@ -5,9 +5,9 @@
       = @item.name
     .item-img-content
       = image_tag @item.image ,class:"item-box-img"
-      -# - if item.order.id.present?
-        -# .sold-out
-        -#   %span Sold Out!!
+      - if @item.order.present?
+        .sold-out
+          %span Sold Out!!
     .item-price-box
       %span.item-price#adden
         = @item.price
@@ -18,10 +18,11 @@
         = link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn"
         %p.or-text or
         = link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy'
+      - elsif !@item.order.present?
+        = link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"
       - else
-        = link_to '購入画面に進む', "#" ,class:"item-red-btn"
     .item-explain-box
-      %span= "商品説明"
+      %span= @item.description
     %table.detail-table
       %tbody
         %tr

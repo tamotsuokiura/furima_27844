@@ -1,11 +1,15 @@
 .error-alert {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 5vh;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .error-message {
-  font-size: 1.3vw;
+ 
+  font-size: 10px;
   list-style: circle;
   color: rgb(182, 48, 0);
 }

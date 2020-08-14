@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :orders
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i
   ZENKAKU_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
@@ -23,7 +24,7 @@ class User < ApplicationRecord
   end
 
   with_options presence: true do 
-    validates :nickname, presence: true
+    validates :nickname
     validates :name_kanzi_first
     validates :name_kanzi_last
     validates :name_kana_first
