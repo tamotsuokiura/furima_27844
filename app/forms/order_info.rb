@@ -10,8 +10,8 @@ class OrderInfo
     validates :city
     validates :house_number
     validates :tel, format: { with: /\A[0-9]+\z/, message: "Input Input half-width characters & figure"}, length: {maximum: 11}
-    validates :user_id
-    validates :item_id
+    # validates :user_id
+    # validates :item_id
   end
 
   
