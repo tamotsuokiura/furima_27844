@@ -13,7 +13,7 @@ describe "OrderInfo" do
       sleep(1)
     end
 
-    context "登録ができないとき" do
+    context "登録ができない時" do
 
       it "postal_code空NG" do
         @order_info.postal_code = "" 
