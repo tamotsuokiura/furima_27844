@@ -44,4 +44,6 @@ const pay = () => {
   });
 };
 
-window.addEventListener("load", pay);
+if(window.location.href.match(/\/items\/\d+\/orders/)) {
+  window.addEventListener("load", pay);
+}
