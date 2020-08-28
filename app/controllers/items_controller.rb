@@ -19,6 +19,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)

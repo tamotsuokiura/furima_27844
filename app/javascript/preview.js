@@ -4,7 +4,7 @@ if(window.location.href.match(/\/items\/new/) || window.location.href.match(/\/i
     const ImageList = document.getElementById("image-list");
 
     document.getElementById("item_image").addEventListener("change", function(e){
-      const imageContent = document.querySelector("img");
+      const imageContent = document.getElementById("current-image");
       if (imageContent){
         imageContent.remove();
       };
@@ -17,7 +17,6 @@ if(window.location.href.match(/\/items\/new/) || window.location.href.match(/\/i
       blobImage.setAttribute("src", imageURL);
       
       imageElement.appendChild(blobImage);
-      console.log(ImageList);
       ImageList.appendChild(imageElement);
     });
   });

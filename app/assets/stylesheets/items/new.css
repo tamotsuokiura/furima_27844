@@ -84,6 +84,10 @@
   width: 100%;
 }
 
+#current-image{
+  width: 100%;
+}
+
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
